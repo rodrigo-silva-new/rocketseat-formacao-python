@@ -7,10 +7,13 @@ def ver_contatos(contatos):
   print("\nLista de contatos:")
   for indice, contato in enumerate(contatos, start=1):
     nome_contato = contato["nome"]
-    print(f"{indice}. {nome_contato}")
+    telefone_contato = contato["telefone"]
+    email_contato = contato["email"]
+    favorito = "★ " if contato["favorito"] else ""
+    print(f"{favorito}{indice}. {nome_contato} - Telefone: {telefone_contato} - E-mail: {email_contato}")
 
 def editar_contato(contatos, indice_contato):
-  indice = int(indice_contato)
+  indice = int(indice_contato) - 1
   while True:
     print("\n1. Nome")
     print("2. Telefone")
@@ -19,20 +22,18 @@ def editar_contato(contatos, indice_contato):
 
     escolha = input("Qual informação deseja editar: ")
 
-    if escolha == 1:
+    if escolha == '1':
       novo_nome = input("Digite o novo nome: ")
       contatos[indice]["nome"] = novo_nome
-    elif escolha == 2:
+    elif escolha == '2':
       novo_telefone = input("Digite o novo telefone: ")
-      contatos["telefone"] = novo_telefone
-    elif escolha == 3:
+      contatos[indice]["telefone"] = novo_telefone
+    elif escolha == '3':
       novo_email = input("Digite o novo e-mail: ")
-      contatos["email"] = novo_email
-    elif escolha == 4:
+      contatos[indice]["email"] = novo_email
+    elif escolha == '4':
       print("Edição de contato encerrada!")
       break
-
-    print(contatos)
 
 contatos = []
 favoritos = []
@@ -46,7 +47,7 @@ while True:
   print("6. Apagar um contato")
   print("7. Fechar agenda")
   
-  opcao = input("Digite qual opção deseja utilizar: ")
+  opcao = input("\nDigite qual opção deseja utilizar: ")
 
   if opcao == "1":
     nome_contato = input("Digite o nome do contato: ")
