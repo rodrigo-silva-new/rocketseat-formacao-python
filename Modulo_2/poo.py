@@ -9,6 +9,7 @@ class Pessoa:
 
   def saudacao(self):
     return f"Olá, meu nome é {self.nome} e eu tenho {self.idade} anos."
+  
 
 # Objetos
 pessoa1 = Pessoa("Alice", 30)
